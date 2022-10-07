@@ -1,0 +1,23 @@
+query GetCapsules($offset: Int!, $limit: Int!) {
+  capsules(offset: $offset, limit: $limit) {
+    id
+    serial
+  }
+}
+
+query GetCapsule($id: ID!) {
+  capsule(id: $id) {
+    id
+    type
+    serial
+    reuse_count
+    status
+    last_update
+    land_landings
+    water_landings
+    launches {
+      id
+      name
+    }
+  }
+}

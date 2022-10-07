@@ -1,0 +1,25 @@
+query GetCores($offset: Int!, $limit: Int!) {
+  cores(offset: $offset, limit: $limit) {
+    id
+    serial
+  }
+}
+
+query GetCore($id: ID!) {
+  core(id: $id) {
+    asds_attempts
+    asds_landings
+    block
+    id
+    serial
+    reuse_count
+    rtls_attempts
+    rtls_landings
+    status
+    last_update
+    launches {
+      id
+      name
+    }
+  }
+}

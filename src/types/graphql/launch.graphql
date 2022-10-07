@@ -1,0 +1,67 @@
+fragment LaunchParts on Launch {
+  id
+  name
+  date_utc
+  launchpad {
+    id
+    name
+  }
+  links {
+    flickr {
+      original
+    }
+    patch {
+      small
+      large
+    }
+  }
+  details
+  rocket {
+    id
+    name
+  }
+}
+
+query GetLaunches($offset: Int!, $limit: Int!) {
+  launches(offset: $offset, limit: $limit) {
+    ...LaunchParts
+  }
+}
+
+query GetLaunch($id: ID!) {
+  launch(id: $id) {
+    id
+    name
+    upcoming
+    links {
+      flickr {
+        original
+      }
+      patch {
+        small
+        large
+      }
+    }
+    date_utc
+    launchpad {
+      id
+      name
+    }
+    details
+    rocket {
+      name
+      id
+    }
+  }
+}
+
+query GetLaunchFairings($id: ID!) {
+  launch(id: $id) {
+    id
+    fairings {
+      reused
+      recovery_attempt
+      recovered
+    }
+  }
+}

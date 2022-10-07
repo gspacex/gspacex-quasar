@@ -1,0 +1,38 @@
+query GetRockets($offset: Int!, $limit: Int!) {
+  rockets(offset: $offset, limit: $limit) {
+    id
+    name
+    description
+    images
+  }
+}
+
+query GetRocket($id: ID!) {
+  rocket(id: $id) {
+    id
+    name
+    description
+    images
+    active
+    boosters
+    diameter {
+      feet
+    }
+    engines {
+      engine_loss_max
+      layout
+      number
+      propellant_1
+      propellant_2
+      thrust_sea_level {
+        lbf
+      }
+      thrust_to_weight
+      thrust_vacuum {
+        lbf
+      }
+      type
+      version
+    }
+  }
+}

@@ -1,0 +1,18 @@
+query GetDragons($offset: Int!, $limit: Int!) {
+  dragons(offset: $offset, limit: $limit) {
+    id
+    name
+    description
+    images
+  }
+}
+
+query GetDragon($id: ID!) {
+  dragon(id: $id) {
+    id
+    name
+    description
+    images
+    active
+  }
+}
