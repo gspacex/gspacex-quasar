@@ -26,7 +26,7 @@ const routes: RouteRecordRaw[] = [
         path: 'launches/:id/fairings',
         component: () => import('pages/launch/LaunchFairingsPage.vue'),
       },
-      {
+      /*{
         path: 'launches/:id/rocket/first-stage',
         component: () =>
           import('pages/launch/rocket/LaunchRocketFirstStagePage.vue'),
@@ -35,7 +35,7 @@ const routes: RouteRecordRaw[] = [
         path: 'launches/:id/rocket/second-stage',
         component: () =>
           import('pages/launch/rocket/LaunchRocketSecondStagePage.vue'),
-      },
+      },*/
       {
         path: 'rockets',
         component: () => import('pages/rocket/RocketsPage.vue'),

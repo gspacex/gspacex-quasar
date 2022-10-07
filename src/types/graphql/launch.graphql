@@ -28,6 +28,18 @@ query GetLaunches($offset: Int!, $limit: Int!) {
   }
 }
 
+query GetLaunchesUpcoming($offset: Int!, $limit: Int!) {
+  launchesUpcoming(offset: $offset, limit: $limit) {
+    ...LaunchParts
+  }
+}
+
+query GetLaunchesPast($offset: Int!, $limit: Int!) {
+  launchesPast(offset: $offset, limit: $limit) {
+    ...LaunchParts
+  }
+}
+
 query GetLaunch($id: ID!) {
   launch(id: $id) {
     id

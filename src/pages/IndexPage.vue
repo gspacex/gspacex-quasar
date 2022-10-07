@@ -4,6 +4,4 @@
   </q-page>
 </template>
 
-<script setup lang="ts">
-import LaunchDeck from 'components/launch/LaunchDeck.vue';
-</script>
+<script setup lang="ts"></script>
