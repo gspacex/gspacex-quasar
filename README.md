@@ -1,6 +1,6 @@
-# SpaceX (quasar-spacex)
+# Quasar GSpaceX
 
-Quasar SpaceX
+Quasar GSpaceX
 
 https://github.com/SpaceXLand/api
 
