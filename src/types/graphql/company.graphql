@@ -1,0 +1,58 @@
+query GetCompanies($offset: Int!, $limit: Int!) {
+  companies(offset: $offset, limit: $limit) {
+    id
+    name
+    founder
+    founded
+    employees
+    vehicles
+    launch_sites
+    test_sites
+    ceo
+    cto
+    coo
+    cto_propulsion
+    valuation
+    headquarters {
+      address
+      city
+      state
+    }
+    links {
+      website
+      flickr
+      twitter
+      elon_twitter
+    }
+    summary
+  }
+}
+
+query GetCompany($id: ID!) {
+  company(id: $id) {
+    name
+    founder
+    founded
+    employees
+    vehicles
+    launch_sites
+    test_sites
+    ceo
+    cto
+    coo
+    cto_propulsion
+    valuation
+    headquarters {
+      address
+      city
+      state
+    }
+    links {
+      website
+      flickr
+      twitter
+      elon_twitter
+    }
+    summary
+  }
+}

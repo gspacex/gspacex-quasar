@@ -27,15 +27,14 @@ h3 {
 a {
   text-decoration: none;
   color: inherit;
+  //color: #388fec;
 }
 
-/*.q-page {
-  background-image: url('/images/andy-holmes-rCbdp8VCYhQ-unsplash.jpg');
-  //background-position: center;
-  //background-repeat: no-repeat;
-  background-attachment: fixed;
-  //background-color: darkslategray;
-}*/
+a:hover {
+  text-decoration: none;
+  //color: #6badf4;
+  color: #388fec;
+}
 
 .card-column {
   //margin: 0 auto;

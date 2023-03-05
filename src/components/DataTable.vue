@@ -29,6 +29,6 @@ const columns = [
   { name: 'value', label: 'Value', field: 'value', align: 'left' },
 ];
 const pagination = {
-  rowsPerPage: 10,
+  rowsPerPage: 20,
 };
 </script>

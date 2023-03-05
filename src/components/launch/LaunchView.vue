@@ -27,6 +27,7 @@
       </q-carousel-control>
     </template>
   </q-carousel>
+  <h1>{{ launch?.name }}</h1>
   <div>
     <q-list dense padding>
       <q-item>

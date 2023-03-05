@@ -11,6 +11,8 @@
 const { configure } = require('quasar/wrappers');
 const env = require('dotenv').config().parsed;
 
+//import ReactivityTransform from '@vue-macros/reactivity-transform/vite';
+
 module.exports = configure(function (/* ctx */) {
   return {
     eslint: {
@@ -75,13 +77,11 @@ module.exports = configure(function (/* ctx */) {
 
       // extendViteConf (viteConf) {},
 
-      viteVuePluginOptions: {
+      /*viteVuePluginOptions: {
         reactivityTransform: true,
-      },
+      },*/
 
-      // vitePlugins: [
-      //   [ 'package-name', { ..options.. } ]
-      // ]
+      vitePlugins: [['@vue-macros/reactivity-transform/vite', {}]],
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
@@ -192,7 +192,7 @@ module.exports = configure(function (/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'quasar-spacex',
+        appId: 'quasar-gspacex',
       },
     },
 

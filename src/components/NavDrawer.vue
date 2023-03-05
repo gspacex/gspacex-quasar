@@ -39,6 +39,7 @@
         </q-item-section>
       </q-item>
 
+      <!--
       <q-item to="/payloads" v-ripple>
         <q-item-section>
           <q-icon name="o_launch" size="xs" />
@@ -62,6 +63,7 @@
           <q-icon name="o_directions_boat" size="xs" />
         </q-item-section>
       </q-item>
+    -->
     </q-list>
 
     <div class="navbox" id="layout-navbox"></div>

@@ -6,7 +6,6 @@ import { CodegenConfig } from '@graphql-codegen/cli';
 const config: CodegenConfig = {
   schema: process.env.GRAPHQL_ENDPOINT,
   documents: ['src/types/graphql/*.graphql'],
-  //documents: ['src/types/graphql/core.graphql'],
   generates: {
     './src/types/graphql/index.ts': {
       plugins: ['typescript', 'typescript-operations', 'typed-document-node'],

@@ -15,7 +15,7 @@
           <q-icon name="o_rocket" size="sm" />
         </q-avatar>
 
-        <q-toolbar-title> SpaceX </q-toolbar-title>
+        <q-toolbar-title> GSpaceX </q-toolbar-title>
 
         <q-toggle
           v-model="light"

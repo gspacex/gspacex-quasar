@@ -1,10 +1,8 @@
 # Quasar GSpaceX
 
-Quasar GSpaceX
+Front end for [GSpaceX](https://github.com/gspacex/gspacex)
 
-https://github.com/SpaceXLand/api
-
-https://api.spacex.land/graphql/
+Demo at: https://quasar-gspacex.pages.dev/
 
 ## Generate GraphQL Types
 

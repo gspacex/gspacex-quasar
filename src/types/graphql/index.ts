@@ -11,6 +11,7 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  BigInt: any;
   DateTime: any;
 };
 
@@ -25,6 +26,41 @@ export type Capsule = {
   status: Scalars['String'];
   type: Scalars['String'];
   water_landings: Scalars['Int'];
+};
+
+export type Company = {
+  __typename?: 'Company';
+  ceo: Scalars['String'];
+  coo: Scalars['String'];
+  cto: Scalars['String'];
+  cto_propulsion: Scalars['String'];
+  employees: Scalars['Int'];
+  founded: Scalars['Int'];
+  founder: Scalars['String'];
+  headquarters: CompanyHeadquarters;
+  id: Scalars['ID'];
+  launch_sites: Scalars['Int'];
+  links: CompanyLinks;
+  name: Scalars['String'];
+  summary: Scalars['String'];
+  test_sites: Scalars['Int'];
+  valuation: Scalars['BigInt'];
+  vehicles: Scalars['Int'];
+};
+
+export type CompanyHeadquarters = {
+  __typename?: 'CompanyHeadquarters';
+  address: Scalars['String'];
+  city: Scalars['String'];
+  state: Scalars['String'];
+};
+
+export type CompanyLinks = {
+  __typename?: 'CompanyLinks';
+  elon_twitter: Scalars['String'];
+  flickr: Scalars['String'];
+  twitter: Scalars['String'];
+  website: Scalars['String'];
 };
 
 export type Core = {
@@ -122,6 +158,8 @@ export type Query = {
   __typename?: 'Query';
   capsule?: Maybe<Capsule>;
   capsules: Array<Capsule>;
+  companies: Array<Company>;
+  company?: Maybe<Company>;
   core?: Maybe<Core>;
   cores: Array<Core>;
   dragon?: Maybe<Dragon>;
@@ -147,6 +185,17 @@ export type QueryCapsuleArgs = {
 export type QueryCapsulesArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   offset?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryCompaniesArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+};
+
+
+export type QueryCompanyArgs = {
+  id: Scalars['ID'];
 };
 
 
@@ -284,6 +333,21 @@ export type GetCapsuleQueryVariables = Exact<{
 
 export type GetCapsuleQuery = { __typename?: 'Query', capsule?: { __typename?: 'Capsule', id: string, type: string, serial: string, reuse_count: number, status: string, last_update?: string | null, land_landings: number, water_landings: number, launches: Array<{ __typename?: 'Launch', id: string, name: string }> } | null };
 
+export type GetCompaniesQueryVariables = Exact<{
+  offset: Scalars['Int'];
+  limit: Scalars['Int'];
+}>;
+
+
+export type GetCompaniesQuery = { __typename?: 'Query', companies: Array<{ __typename?: 'Company', id: string, name: string, founder: string, founded: number, employees: number, vehicles: number, launch_sites: number, test_sites: number, ceo: string, cto: string, coo: string, cto_propulsion: string, valuation: any, summary: string, headquarters: { __typename?: 'CompanyHeadquarters', address: string, city: string, state: string }, links: { __typename?: 'CompanyLinks', website: string, flickr: string, twitter: string, elon_twitter: string } }> };
+
+export type GetCompanyQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type GetCompanyQuery = { __typename?: 'Query', company?: { __typename?: 'Company', name: string, founder: string, founded: number, employees: number, vehicles: number, launch_sites: number, test_sites: number, ceo: string, cto: string, coo: string, cto_propulsion: string, valuation: any, summary: string, headquarters: { __typename?: 'CompanyHeadquarters', address: string, city: string, state: string }, links: { __typename?: 'CompanyLinks', website: string, flickr: string, twitter: string, elon_twitter: string } } | null };
+
 export type GetCoresQueryVariables = Exact<{
   offset: Scalars['Int'];
   limit: Scalars['Int'];
@@ -372,6 +436,8 @@ export type GetRocketQuery = { __typename?: 'Query', rocket?: { __typename?: 'Ro
 export const LaunchPartsFragmentDoc = {"kind":"Document","definitions":[{"kind":"FragmentDefinition","name":{"kind":"Name","value":"LaunchParts"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Launch"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"date_utc"}},{"kind":"Field","name":{"kind":"Name","value":"launchpad"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"Field","name":{"kind":"Name","value":"links"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"flickr"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"original"}}]}},{"kind":"Field","name":{"kind":"Name","value":"patch"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"small"}},{"kind":"Field","name":{"kind":"Name","value":"large"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"details"}},{"kind":"Field","name":{"kind":"Name","value":"rocket"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]} as unknown as DocumentNode<LaunchPartsFragment, unknown>;
 export const GetCapsulesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetCapsules"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"offset"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"capsules"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"Variable","name":{"kind":"Name","value":"offset"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"serial"}}]}}]}}]} as unknown as DocumentNode<GetCapsulesQuery, GetCapsulesQueryVariables>;
 export const GetCapsuleDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetCapsule"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"capsule"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"type"}},{"kind":"Field","name":{"kind":"Name","value":"serial"}},{"kind":"Field","name":{"kind":"Name","value":"reuse_count"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"last_update"}},{"kind":"Field","name":{"kind":"Name","value":"land_landings"}},{"kind":"Field","name":{"kind":"Name","value":"water_landings"}},{"kind":"Field","name":{"kind":"Name","value":"launches"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]} as unknown as DocumentNode<GetCapsuleQuery, GetCapsuleQueryVariables>;
+export const GetCompaniesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetCompanies"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"offset"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"companies"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"Variable","name":{"kind":"Name","value":"offset"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"founder"}},{"kind":"Field","name":{"kind":"Name","value":"founded"}},{"kind":"Field","name":{"kind":"Name","value":"employees"}},{"kind":"Field","name":{"kind":"Name","value":"vehicles"}},{"kind":"Field","name":{"kind":"Name","value":"launch_sites"}},{"kind":"Field","name":{"kind":"Name","value":"test_sites"}},{"kind":"Field","name":{"kind":"Name","value":"ceo"}},{"kind":"Field","name":{"kind":"Name","value":"cto"}},{"kind":"Field","name":{"kind":"Name","value":"coo"}},{"kind":"Field","name":{"kind":"Name","value":"cto_propulsion"}},{"kind":"Field","name":{"kind":"Name","value":"valuation"}},{"kind":"Field","name":{"kind":"Name","value":"headquarters"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"state"}}]}},{"kind":"Field","name":{"kind":"Name","value":"links"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"website"}},{"kind":"Field","name":{"kind":"Name","value":"flickr"}},{"kind":"Field","name":{"kind":"Name","value":"twitter"}},{"kind":"Field","name":{"kind":"Name","value":"elon_twitter"}}]}},{"kind":"Field","name":{"kind":"Name","value":"summary"}}]}}]}}]} as unknown as DocumentNode<GetCompaniesQuery, GetCompaniesQueryVariables>;
+export const GetCompanyDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetCompany"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"company"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"founder"}},{"kind":"Field","name":{"kind":"Name","value":"founded"}},{"kind":"Field","name":{"kind":"Name","value":"employees"}},{"kind":"Field","name":{"kind":"Name","value":"vehicles"}},{"kind":"Field","name":{"kind":"Name","value":"launch_sites"}},{"kind":"Field","name":{"kind":"Name","value":"test_sites"}},{"kind":"Field","name":{"kind":"Name","value":"ceo"}},{"kind":"Field","name":{"kind":"Name","value":"cto"}},{"kind":"Field","name":{"kind":"Name","value":"coo"}},{"kind":"Field","name":{"kind":"Name","value":"cto_propulsion"}},{"kind":"Field","name":{"kind":"Name","value":"valuation"}},{"kind":"Field","name":{"kind":"Name","value":"headquarters"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"address"}},{"kind":"Field","name":{"kind":"Name","value":"city"}},{"kind":"Field","name":{"kind":"Name","value":"state"}}]}},{"kind":"Field","name":{"kind":"Name","value":"links"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"website"}},{"kind":"Field","name":{"kind":"Name","value":"flickr"}},{"kind":"Field","name":{"kind":"Name","value":"twitter"}},{"kind":"Field","name":{"kind":"Name","value":"elon_twitter"}}]}},{"kind":"Field","name":{"kind":"Name","value":"summary"}}]}}]}}]} as unknown as DocumentNode<GetCompanyQuery, GetCompanyQueryVariables>;
 export const GetCoresDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetCores"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"offset"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"cores"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"Variable","name":{"kind":"Name","value":"offset"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"serial"}}]}}]}}]} as unknown as DocumentNode<GetCoresQuery, GetCoresQueryVariables>;
 export const GetCoreDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetCore"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"id"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"ID"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"core"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"id"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"asds_attempts"}},{"kind":"Field","name":{"kind":"Name","value":"asds_landings"}},{"kind":"Field","name":{"kind":"Name","value":"block"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"serial"}},{"kind":"Field","name":{"kind":"Name","value":"reuse_count"}},{"kind":"Field","name":{"kind":"Name","value":"rtls_attempts"}},{"kind":"Field","name":{"kind":"Name","value":"rtls_landings"}},{"kind":"Field","name":{"kind":"Name","value":"status"}},{"kind":"Field","name":{"kind":"Name","value":"last_update"}},{"kind":"Field","name":{"kind":"Name","value":"launches"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]}}]}}]} as unknown as DocumentNode<GetCoreQuery, GetCoreQueryVariables>;
 export const GetDragonsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"GetDragons"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"offset"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}},{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"limit"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"dragons"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"offset"},"value":{"kind":"Variable","name":{"kind":"Name","value":"offset"}}},{"kind":"Argument","name":{"kind":"Name","value":"limit"},"value":{"kind":"Variable","name":{"kind":"Name","value":"limit"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"name"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"images"}}]}}]}}]} as unknown as DocumentNode<GetDragonsQuery, GetDragonsQueryVariables>;

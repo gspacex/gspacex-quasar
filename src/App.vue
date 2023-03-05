@@ -17,10 +17,7 @@ import {
 import { cacheExchange } from '@urql/exchange-graphcache';
 
 const client = createClient({
-  //url: 'https://api.spacex.land/graphql',
-  url: process.env.GRAPHQL_ENDPOINT
-    ? process.env.GRAPHQL_ENDPOINT
-    : 'https://api.spacex.land/graphql',
+  url: process.env.GRAPHQL_ENDPOINT ? process.env.GRAPHQL_ENDPOINT : '',
   exchanges: [
     dedupExchange,
     cacheExchange({
