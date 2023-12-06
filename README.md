@@ -1,6 +1,6 @@
-# Quasar GSpaceX
+# GSpaceX - Quasar
 
-Front end for [GSpaceX](https://github.com/gspacex/gspacex)
+Quasar client for [GSpaceX](https://github.com/gspacex/gspacex)
 
 Demo at: https://quasar-gspacex.pages.dev/
 
@@ -21,6 +21,7 @@ npm install
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 
 ```bash
+yarn global add @quasar/cli
 quasar dev
 ```
 
